@@ -30,7 +30,7 @@ class AuthRepository {
                     val isNewUser = task.getResult()?.additionalUserInfo?.isNewUser
                     val user = firebaseAuth.currentUser
 
-                    if (user != null){
+                    if (user != null) {
                         val uid = firebaseAuth.currentUser.uid
                         val name = firebaseAuth.currentUser.displayName
                         val email = firebaseAuth.currentUser.email
@@ -41,11 +41,10 @@ class AuthRepository {
 
                     }
                 } else {
-                    // If sign in fails, display a message to the user.
                     Log.w("Main", "signInWithCredential:failure", task.exception)
                 }
             }
-        return  authenticatedUserMutableLiveData
+        return authenticatedUserMutableLiveData
     }
 
     fun firebaseSignInWithFacebook(accessToken: AccessToken): MutableLiveData<User> {
@@ -60,10 +59,10 @@ class AuthRepository {
                     val isNewUser = task.getResult()?.additionalUserInfo?.isNewUser
                     val user = firebaseAuth.currentUser
 
-                    if (user != null){
+                    if (user != null) {
                         val uid = firebaseAuth.currentUser.uid
                         val name = firebaseAuth.currentUser.displayName
-                        val email =" firebaseAuth.currentUser.email"
+                        val email = " firebaseAuth.currentUser.email"
 
                         val user = User(uid, name, email)
                         user.isNew = isNewUser
@@ -72,13 +71,10 @@ class AuthRepository {
                     }
                 } else {
                     Log.w("Main", "signInWithCredential:failure", task.exception)
-                    updateUI(null)
                 }
             }
-        return  authenticatedUserMutableLiveData
+        return authenticatedUserMutableLiveData
     }
-
-
 
 
     fun createUser(authenticatedUser: User): LiveData<User> {
@@ -94,31 +90,17 @@ class AuthRepository {
                                 authenticatedUser.isCreated = true
                                 newUserMutableLiveData.setValue(authenticatedUser)
                             } else {
-                                Log.e("TAG", userCreationTask.exception.toString() )
+                                Log.e("TAG", userCreationTask.exception.toString())
                             }
                         }
                 } else {
                     newUserMutableLiveData.setValue(authenticatedUser)
                 }
             } else {
-                Log.e("TAG", uidTask.exception.toString() )
+                Log.e("TAG", uidTask.exception.toString())
             }
         }
         return newUserMutableLiveData
     }
 
-    fun firebaseLogout(authCredential: AuthCredential): MutableLiveData<User> {
-
-        var authenticatedUserMutableLiveData = MutableLiveData<User>()
-
-        firebaseAuth.signOut()
-        authenticatedUserMutableLiveData.postValue(null)
-
-        return  authenticatedUserMutableLiveData
-    }
-
-
-    private fun updateUI(user: FirebaseUser?) {
-
-    }
 }

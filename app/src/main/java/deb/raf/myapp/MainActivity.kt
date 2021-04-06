@@ -28,7 +28,7 @@ private lateinit var googleSignInButton: SignInButton
 private lateinit var googleSignInClient: GoogleSignInClient
 private lateinit var authViewModel: AuthViewModel
 
-class MainActivity : AppCompatActivity(){
+class MainActivity : AppCompatActivity() {
     private val RC_SIGN_IN = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,12 +39,10 @@ class MainActivity : AppCompatActivity(){
         callbackManager = CallbackManager.Factory.create()
 
 
-
         initSignInButton()
         initAuthViewModel()
         initGoogleSignInClient()
         initFacebookSignInButton()
-
 
     }
 
@@ -75,7 +73,7 @@ class MainActivity : AppCompatActivity(){
     }
 
     private fun getFacebookAuthCredential(accessToken: AccessToken) {
-                signInWithFacebookAuthCredential(accessToken)
+        signInWithFacebookAuthCredential(accessToken)
     }
 
 
@@ -86,8 +84,6 @@ class MainActivity : AppCompatActivity(){
                 CoroutineScope(Dispatchers.IO).async {
                     createNewUser(authentificatedUser)
                 }
-                //TODO COROUTINES
-
             } else {
                 goToSignedActivity(authentificatedUser)
             }
@@ -101,15 +97,11 @@ class MainActivity : AppCompatActivity(){
                 CoroutineScope(Dispatchers.IO).async {
                     createNewUser(authentificatedUser)
                 }
-                //TODO COROUTINES
-                val currentUser = firebaseAuth.currentUser
-
             } else {
                 goToSignedActivity(authentificatedUser)
             }
         })
     }
-
 
 
     private fun createNewUser(authentificatedUser: User) {
@@ -148,29 +140,30 @@ class MainActivity : AppCompatActivity(){
     private fun initFacebookSignInButton() {
         facebookloginbutton = findViewById(R.id.login_button)
         facebookloginbutton.setPermissions("email", "public_profile")
-        facebookloginbutton.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
-            override fun onSuccess(loginResult: LoginResult) {
-                Log.d("Main", "facebook:onSuccess:$loginResult")
-                getFacebookAuthCredential(loginResult.accessToken)
-                val user = firebaseAuth.currentUser
+        facebookloginbutton.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    Log.d("Main", "facebook:onSuccess:$loginResult")
+                    getFacebookAuthCredential(loginResult.accessToken)
+                    val user = firebaseAuth.currentUser
 
-            }
+                }
 
-            override fun onCancel() {
-                Log.d("Main", "facebook:onCancel")
-            }
+                override fun onCancel() {
+                    Log.d("Main", "facebook:onCancel")
+                }
 
-            override fun onError(error: FacebookException) {
-                Log.d("Main", "facebook:onError", error)
-            }
-        })
+                override fun onError(error: FacebookException) {
+                    Log.d("Main", "facebook:onError", error)
+                }
+            })
     }
 
     private fun signIn() {
         val intent = googleSignInClient.signInIntent
         startActivityForResult(intent, RC_SIGN_IN)
     }
-
 
 
     private fun goToSignedActivity(authentificatedUser: User) {
@@ -180,14 +173,4 @@ class MainActivity : AppCompatActivity(){
         finish()
     }
 
-
-    override fun onStart() {
-        super.onStart()
-        var currentUser = firebaseAuth.currentUser
-//        updateUI(currentUser)
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-
-    }
 }

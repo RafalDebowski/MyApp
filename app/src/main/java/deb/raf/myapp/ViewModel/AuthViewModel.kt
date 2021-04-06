@@ -10,28 +10,21 @@ import deb.raf.myapp.repository.AuthRepository
 class AuthViewModel() : ViewModel() {
 
     lateinit var authenticatedUserLiveData: LiveData<User>
-     var authRepository = AuthRepository()
+    var authRepository = AuthRepository()
     lateinit var createdUserLiveData: LiveData<User>
 
-    fun   signInWithGoogle(googleAuthCredential: AuthCredential) {
-             authenticatedUserLiveData = authRepository.firebaseSignInWithGoogle(googleAuthCredential)
-        }
+    fun signInWithGoogle(googleAuthCredential: AuthCredential) {
+        authenticatedUserLiveData = authRepository.firebaseSignInWithGoogle(googleAuthCredential)
+    }
 
-    fun   signInWithFacebook(accessToken: AccessToken) {
+    fun signInWithFacebook(accessToken: AccessToken) {
         authenticatedUserLiveData = authRepository.firebaseSignInWithFacebook(accessToken)
     }
 
 
-
-    fun createUser(authenticatedUser: User){
+    fun createUser(authenticatedUser: User) {
         createdUserLiveData = authRepository.createUser(authenticatedUser)
     }
 
-    fun logoutWithGoogle(googleAuthCredential: AuthCredential) {
-        authenticatedUserLiveData = authRepository.firebaseLogout(googleAuthCredential)
-    }
 
-
-
-
- }
+}
