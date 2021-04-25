@@ -31,9 +31,10 @@ class AuthRepository {
                     val user = firebaseAuth.currentUser
 
                     if (user != null) {
-                        val uid = firebaseAuth.currentUser.uid
-                        val name = firebaseAuth.currentUser.displayName
-                        val email = firebaseAuth.currentUser.email
+                        val uid = user.uid
+                        val name = user.displayName
+                        val email = user.email
+
 
                         val user = User(uid, name, email)
                         user.isNew = isNewUser
@@ -46,6 +47,8 @@ class AuthRepository {
             }
         return authenticatedUserMutableLiveData
     }
+
+
 
     fun firebaseSignInWithFacebook(accessToken: AccessToken): MutableLiveData<User> {
 
@@ -60,9 +63,10 @@ class AuthRepository {
                     val user = firebaseAuth.currentUser
 
                     if (user != null) {
-                        val uid = firebaseAuth.currentUser.uid
-                        val name = firebaseAuth.currentUser.displayName
-                        val email = " firebaseAuth.currentUser.email"
+                        val uid = user.uid
+                        val name = user.displayName
+                        val email = "firebaseAuth.currentUser.email"
+                        //czemu email == null???
 
                         val user = User(uid, name, email)
                         user.isNew = isNewUser

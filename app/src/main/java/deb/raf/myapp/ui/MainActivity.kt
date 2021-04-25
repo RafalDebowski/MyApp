@@ -1,5 +1,7 @@
-package deb.raf.myapp
+package deb.raf.myapp.ui
 
+import android.app.Activity
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,8 +15,9 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
 import dagger.android.AndroidInjection
-import dagger.android.AndroidInjectionModule
+import dagger.android.HasAndroidInjector
 import dagger.android.support.DaggerAppCompatActivity
+import deb.raf.myapp.R
 import deb.raf.myapp.ViewModel.AuthViewModel
 import deb.raf.myapp.model.User
 import kotlinx.coroutines.CoroutineScope
@@ -22,19 +25,20 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import javax.inject.Inject
 
-private lateinit var firebaseAuth: FirebaseAuth
-private lateinit var callbackManager: CallbackManager
-private lateinit var facebookloginbutton: LoginButton
-private lateinit var googleSignInButton: SignInButton
-private lateinit var googleSignInClient: GoogleSignInClient
-@Inject
-lateinit var authViewModel: AuthViewModel
+class MainActivity : DaggerAppCompatActivity(), HasAndroidInjector {
+
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var callbackManager: CallbackManager
+    private lateinit var facebookloginbutton: LoginButton
+    private lateinit var googleSignInButton: SignInButton
+    private lateinit var googleSignInClient: GoogleSignInClient
+
+    @Inject
+    lateinit var authViewModel: AuthViewModel
 
 
-class MainActivity : DaggerAppCompatActivity() {
     private val RC_SIGN_IN = 123
     override fun onCreate(savedInstanceState: Bundle?) {
-
         AndroidInjection.inject(this)
 
         super.onCreate(savedInstanceState)

@@ -6,12 +6,15 @@ import com.facebook.AccessToken
 import com.google.firebase.auth.AuthCredential
 import deb.raf.myapp.model.User
 import deb.raf.myapp.repository.AuthRepository
+import javax.inject.Inject
 
-class AuthViewModel() : ViewModel() {
+class AuthViewModel @Inject constructor() : ViewModel() {
+
 
     lateinit var authenticatedUserLiveData: LiveData<User>
     var authRepository = AuthRepository()
     lateinit var createdUserLiveData: LiveData<User>
+
 
     fun signInWithGoogle(googleAuthCredential: AuthCredential) {
         authenticatedUserLiveData = authRepository.firebaseSignInWithGoogle(googleAuthCredential)
