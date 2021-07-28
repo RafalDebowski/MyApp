@@ -6,9 +6,8 @@ import com.facebook.AccessToken
 import com.google.firebase.auth.AuthCredential
 import deb.raf.myapp.model.User
 import deb.raf.myapp.repository.AuthRepository
-import javax.inject.Inject
 
-class AuthViewModel @Inject constructor() : ViewModel() {
+class AuthViewModel  : ViewModel() {
 
 
     lateinit var authenticatedUserLiveData: LiveData<User>

@@ -36,7 +36,7 @@ class AuthRepository {
                         val email = user.email
 
 
-                        val user = User(uid, name, email)
+                        val user = User(null, name, uid, email)
                         user.isNew = isNewUser
                         authenticatedUserMutableLiveData.postValue(user)
 
@@ -68,7 +68,7 @@ class AuthRepository {
                         val email = "firebaseAuth.currentUser.email"
                         //czemu email == null???
 
-                        val user = User(uid, name, email)
+                        val user = User(0,name, uid, email)
                         user.isNew = isNewUser
                         authenticatedUserMutableLiveData.postValue(user)
 

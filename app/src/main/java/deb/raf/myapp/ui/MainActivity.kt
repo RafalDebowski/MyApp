@@ -5,6 +5,8 @@ import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import com.facebook.*
@@ -14,18 +16,14 @@ import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.*
-import dagger.android.AndroidInjection
-import dagger.android.HasAndroidInjector
-import dagger.android.support.DaggerAppCompatActivity
 import deb.raf.myapp.R
 import deb.raf.myapp.ViewModel.AuthViewModel
 import deb.raf.myapp.model.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
-import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity(), HasAndroidInjector {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var callbackManager: CallbackManager
@@ -33,20 +31,19 @@ class MainActivity : DaggerAppCompatActivity(), HasAndroidInjector {
     private lateinit var googleSignInButton: SignInButton
     private lateinit var googleSignInClient: GoogleSignInClient
 
-    @Inject
-    lateinit var authViewModel: AuthViewModel
+    private lateinit var authViewModel: AuthViewModel
 
 
     private val RC_SIGN_IN = 123
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+
 
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         firebaseAuth = FirebaseAuth.getInstance()
         callbackManager = CallbackManager.Factory.create()
-
 
         initSignInButton()
         initAuthViewModel()
@@ -181,9 +178,6 @@ class MainActivity : DaggerAppCompatActivity(), HasAndroidInjector {
         startActivity(intent)
         finish()
     }
-
-
-
 
 
 }
