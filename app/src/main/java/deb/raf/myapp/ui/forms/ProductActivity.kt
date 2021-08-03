@@ -10,6 +10,8 @@ import deb.raf.myapp.dao.ProductDao
 import deb.raf.myapp.database.Database
 import deb.raf.myapp.model.Product
 import deb.raf.myapp.ui.SignedActivity
+import deb.raf.myapp.ui.lists.PlotOfLandList
+import deb.raf.myapp.ui.lists.ProductList
 
 class ProductActivity : AppCompatActivity() {
 
@@ -17,6 +19,7 @@ class ProductActivity : AppCompatActivity() {
     private lateinit var product_name_edittext: EditText
     private lateinit var product_description_edittext: EditText
     private lateinit var save_button: Button
+    private lateinit var getAll: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,7 @@ class ProductActivity : AppCompatActivity() {
         product_name_edittext = findViewById(R.id.product_name_edittext)
         product_description_edittext = findViewById(R.id.product_description_edittext)
         save_button = findViewById(R.id.save_product)
+        getAll = findViewById(R.id.get_all_products)
 
         backButton.setOnClickListener {
             goToSignedActivity()
@@ -35,11 +39,19 @@ class ProductActivity : AppCompatActivity() {
             addProduct()
         }
 
-
+        getAll.setOnClickListener {
+            startListActivity()
+        }
     }
 
     private fun goToSignedActivity() {
         val intent = Intent(this, SignedActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startListActivity() {
+        val intent = Intent(this, ProductList::class.java)
         startActivity(intent)
         finish()
     }

@@ -9,7 +9,7 @@ import deb.raf.myapp.model.*
 
 @androidx.room.Database(
     entities = [User::class, Product::class, PlotOfLand::class, Purchase::class, Spraying::class, Warehouse::class ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class Database : RoomDatabase() {

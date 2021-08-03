@@ -10,6 +10,8 @@ import deb.raf.myapp.database.Database
 import deb.raf.myapp.model.Purchase
 import deb.raf.myapp.model.Spraying
 import deb.raf.myapp.ui.SignedActivity
+import deb.raf.myapp.ui.lists.PlotOfLandList
+import deb.raf.myapp.ui.lists.SprayingList
 
 class SprayingActivity : AppCompatActivity() {
 
@@ -19,6 +21,7 @@ class SprayingActivity : AppCompatActivity() {
     private lateinit var spraying_usedAmount_edittext: EditText
     private lateinit var spraying_DATE_edittext: EditText
     private lateinit var save_button: Button
+    private lateinit var getAll: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +34,7 @@ class SprayingActivity : AppCompatActivity() {
         spraying_usedAmount_edittext = findViewById(R.id.spraying_usedAmount_edittext)
         spraying_DATE_edittext = findViewById(R.id.spraying_DATE_edittext)
         save_button = findViewById(R.id.save_spraying)
+        getAll = findViewById(R.id.get_all_sprayings)
 
         backButton.setOnClickListener {
             goToSignedActivity()
@@ -39,10 +43,20 @@ class SprayingActivity : AppCompatActivity() {
         save_button.setOnClickListener{
             addSpraying()
         }
+
+        getAll.setOnClickListener {
+            startListActivity()
+        }
     }
 
     private fun goToSignedActivity() {
         val intent = Intent(this, SignedActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startListActivity() {
+        val intent = Intent(this, SprayingList::class.java)
         startActivity(intent)
         finish()
     }

@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp">
-        <activity android:name=".ui.forms.SprayingActivity"></activity>
+        <activity
+            android:name=".ui.lists.PlotOfLandList"
+            android:label="@string/title_activity_plot_of_land_list"
+            android:theme="@style/Theme.MyApp.NoActionBar"></activity>
+        <activity android:name=".ui.forms.SprayingActivity" />
         <activity android:name=".ui.forms.WarehouseActivity" />
         <activity android:name=".ui.forms.PlotOfLandActivity" />
         <activity android:name=".ui.forms.PurchaseActivity" />
