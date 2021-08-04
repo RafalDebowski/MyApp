@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/apple_fruit_green_174354_240x320"
     tools:context=".ui.forms.SprayingActivity">
 
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="WarehouseId"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/spraying_plotId_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="PlotId"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/spraying_usedAmount_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="UsedAmount"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/spraying_DATE_edittext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -49,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="168dp"
         android:text="Date"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/back_toSignedActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

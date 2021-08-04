@@ -8,26 +8,27 @@ import androidx.recyclerview.widget.RecyclerView
 import deb.raf.myapp.R
 import deb.raf.myapp.model.Warehouse
 
-class WarehouseAdapter( val warehouseList: List<Warehouse>?) : RecyclerView.Adapter<WarehouseAdapter.ViewHolder>() {
+class WarehouseAdapter(val warehouseList: List<Warehouse>?) :
+    RecyclerView.Adapter<WarehouseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WarehouseAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context.applicationContext)
-        val row = layoutInflater.inflate(R.layout.warehouse_item, parent , false )
+        val row = layoutInflater.inflate(R.layout.warehouse_item, parent, false)
         return ViewHolder(row)
     }
 
     override fun onBindViewHolder(holder: WarehouseAdapter.ViewHolder, position: Int) {
-        holder.text1.text = "PLOT ID: " + warehouseList?.get(position)?.purchaseId
-        holder.text2.text = "NAME: " + warehouseList?.get(position)?.warehouseId
+        holder.text1.text = "ID MAGAZYNU: " + warehouseList?.get(position)?.warehouseId
+        holder.text2.text = "ID ZAKUPU: " + warehouseList?.get(position)?.purchaseId
     }
 
     override fun getItemCount(): Int {
         return warehouseList!!.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        var text1 : TextView
-        var text2 : TextView
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var text1: TextView
+        var text2: TextView
 
         init {
             text1 = view.findViewById(R.id.text1)

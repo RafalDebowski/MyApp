@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
+    android:background="@drawable/apple_fruit_green_174354_240x320"
     tools:context=".ui.SignedActivity">
 
 
@@ -18,64 +17,57 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976" />
 
     <Button
         android:id="@+id/product_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/prod"
         android:layout_marginBottom="20dp"
-        android:text="PRODUKT"
-        app:layout_constraintBottom_toTopOf="@+id/plotOfLand_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        />
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@+id/plotOfLand_button"
+        app:layout_constraintTop_toTopOf="@+id/plotOfLand_button" />
 
     <Button
         android:id="@+id/purchase_button"
-        android:layout_width="295dp"
+        android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:text="ZAKUP"
-        app:layout_constraintBottom_toTopOf="@+id/warehouse_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/purchase"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/warehouse_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="MAGAZYN"
-        app:layout_constraintBottom_toTopOf="@+id/product_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/warehouse"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@+id/purchase_button"
+        app:layout_constraintTop_toTopOf="@+id/purchase_button" />
 
     <Button
         android:id="@+id/spraying_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="124dp"
-        android:text="HISTORIA STOSOWANIA ŚRODKÓW"
-        app:layout_constraintBottom_toTopOf="@+id/logout_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/history"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@+id/warehouse_button"
+        app:layout_constraintTop_toTopOf="@+id/warehouse_button" />
 
     <Button
         android:id="@+id/plotOfLand_button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="20dp"
-        android:text="DZIAŁKA"
-        app:layout_constraintBottom_toTopOf="@+id/spraying_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:background="@drawable/place"
+        android:layout_marginStart="25dp"
+        app:layout_constraintStart_toEndOf="@+id/spraying_button"
+        app:layout_constraintTop_toTopOf="@+id/spraying_button"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
